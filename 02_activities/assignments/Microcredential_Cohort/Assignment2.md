@@ -56,7 +56,30 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 slowly changing dimension: Overwrite design. If the customer moves or updates their address, the existing row is updated with the new address.
+Columns:
+- customer_address_key
+- customer_id
+- street
+- city
+- province
+- postal_code
+- country
+
+Type 2 slowly changing dimension: history-retaining design, it will retain changes. It preserves historical changes by storing multiple versions of the customer address.
+Columns:
+- customer_address_key
+- customer_id
+- street
+- city
+- province
+- postal_code
+- country
+- start_date
+- end_date
+- is_current
+
+Overall, Type 1 is best when only the most recent customer information is needed, while Type 2 is more suitable when historical tracking and reporting are important.
 ```
 
 ***
